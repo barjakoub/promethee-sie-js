@@ -1,0 +1,46 @@
+extends ./../layouts/main.pug
+
+block content
+  section 
+    div(class="candidates-previews p-3 mt-5 container rounded bg-white" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;")
+      header(class="row row-cols-2")
+        div(class="col")
+          h5 Preview Data Kandidat
+          p Berikut merupakan daftar data kandidat yang akan dilakukan perangkingan dengan metode Promethee
+        div(class="col text-end") Rank ID: 
+          span(class="badge bg-primary") #{rankId}
+      div 
+        table(class="table table-striped table-bordered") 
+          thead(class="table-primary") 
+            tr
+              th No.
+              th Nama Lengkap
+              th Peran
+              th Kejujuran
+              th Loyalitas
+              th Kedisiplinan
+              th Tanggung Jawab
+              th Kepribadian
+              th Penampilan
+              th Kehadiran 
+          tbody 
+            each candidate, index in candidates 
+              tr 
+                td #{index + 1 + '.'}
+                td #{candidate.candName}
+                td #{candidate.candRole}
+                td #{candidate.candK1}
+                td #{candidate.candK2}
+                td #{candidate.candK3}
+                td #{candidate.candK4}
+                td #{candidate.candK5}
+                td #{candidate.candK6}
+                td #{candidate.candK7}
+        nav(class="d-flex justify-content-between") 
+          div(class="") 
+            //- button(class="btn btn-success ps-5 pe-5") Proses 
+            - const resultURI = `http://localhost:3005/candidates/${rankId}/calculation`
+            form(action="" method="POST")
+              input(type="hidden" name="rankId" value=rankId) 
+              input(type="hidden" name="candidates" value=candidates)
+              button(type="submit" class="btn btn-success ps-5 pe-5") Proses 

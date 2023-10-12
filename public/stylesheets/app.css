@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Frank+Ruhl+Libre:wght@500&family=Poppins:wght@400;500&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+    /* background-color: rgb(236, 236, 236); */
+    background-image: linear-gradient(to bottom, #fcf8ff, #f5f5fe, #edf3fc, #e4f0f9, #dceef4);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.table-title {
+    font-family: 'Frank Ruhl Libre', serif;
+}
+
+.main-nav {
+    padding: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.additional-information {
+    padding: 0.3em 1em;
+    border-radius: 0.5em;
+    background-color: rgb(247, 247, 185);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-family: 'Frank Ruhl Libre', serif;
+}
+
+.center-title h5 {
+    padding: 0.75em 0 0.75em 1em;
+    font-family: 'Bungee Spice', cursive;
+}
+
+form label {
+    font-weight: 500;
+}
+
+.gold-medal {
+    background-color: #D4AF37;
+}
+
+.silver-medal {
+    background-color: #E5E4E2;
+}
+
+.bronze-medal {
+    background-color: #CD7F32;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 3em;
+
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+.footer-header {
+    padding: 0.5em 3em;
+}
+
+/* LEFT */
+.footer-left {
+    padding: 0.5em 0;
+}
+
+.footer-left ul {
+    display: flex;
+}
+
+.footer-left ul li {
+    list-style-type: none;
+}
+
+.footer-left ul li a {
+    padding: 0 0.5em;
+    text-decoration: none;
+    color: black;
+}
+
+/* RIGHT */
+.footer-right {
+    padding: 0.5em 0;
+}
+
+.footer-right ul {
+    display: flex;
+}
+
+.footer-right ul li {
+    list-style-type: none;
+}
+
+.footer-right ul li a {
+    padding: 0 0.5em;
+    text-decoration: none;
+    color: black;
+}
+
+/* INDEX.PUG */
+.table-title {
+    font-size: 1.25em;
+}
+
+.divider {
+    height: 1em;
+    width: 50%;
+
+    border-radius: 1em;
+    background-image: linear-gradient(to right, #69b6ff, #9fb6ff, #c8b7fd, #e8b9f4, #ffbeea);
+}
+
+/* CANDIDATES.PUG */
+.form-candidates {
+    padding: 1em 1em;
+
+    background-color: white;
+}
+
+.candidates-count header {
+    background-color: rgb(0, 191, 255);
+    /* font-weight: bold; */
+    font-family: 'Frank Ruhl Libre', serif;
+}
+
+.cand-count {
+    padding: 0.5em 0.5em;
+
+    font-size: 1em;
+    font-weight: bold;
+
+    background-image: linear-gradient(to right bottom, #89a5f0, #a29ef3, #bf96f1, #db8be8, #f67fd9);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.count-info {
+    margin-top: 0.5em;
+    padding: 1em 0;
+    /* background-image: linear-gradient(to right bottom, #f4f4f4, #e8e8e8, #dcdcdc, #d0d0d0, #c4c4c4); */
+}
+
+/* PREVIEWS.PUG */
+.candidates-previews {
+    width: 80%;
+}
+
+/* RESULTS.PUG */
+.promethee-results {
+    padding: 2em 1em;
+}

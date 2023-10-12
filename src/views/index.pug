@@ -1,0 +1,56 @@
+extends ./layouts/main.pug
+
+block content 
+  section(class="container-fluid p-0") 
+      article(class="pt-3 pb-3 text-center pt-5 pb-5 mb-5") 
+        div 
+          span(class="additional-information") Geometrical Analysis for Interactive Aid
+          p(class="pt-3") Are better know as
+        header(class="d-flex justify-content-center mb-3") 
+          h1(class="w-50 text-center") Preference Ranking Organization Method for Enrichment Evaluation 
+        p. 
+          Penerapan Metode Promethee Dalam Studi Kasus Pemilihan Crew Terbaik 
+        a(href="http://localhost:3005/promethee/candidates" class="btn btn-primary mt-5 rounded-0") Mulai Sekarang
+  div(class="divider container-fluid mb-5")
+  section(class="container-fluid") 
+      div(class="row row-cols-2")
+        div(class="col")
+          article 
+            header 
+              span(class="table-title") Latest pool of candidates
+              p Berikut merupakan daftar kandidat pada perhitungan sebelumnya. 
+
+            div 
+              table(class="table table-dark table-hover")
+                thead 
+                  tr 
+                    th No. 
+                    th Name 
+                    th Role
+                tbody 
+                  each data, index in candidates
+                    tr 
+                      td #{index+1}
+                      td #{data.candName}
+                      td #{data.candRole}
+        div(class="col") 
+          article 
+            header 
+              span(class="table-title") Candidates Ranking
+              p Berikut merupakan hasil dari perangkingan berdasarkan daftar kandidat sebelumnya.
+            div 
+              table(class="table table-success")
+                thead 
+                  tr 
+                    th No.
+                    th Rank ID 
+                    th Goup Rank Name 
+                    th Option
+                tbody 
+                  each result, i in results 
+                    tr 
+                      td #{i+1}
+                      td #{result.resultId}
+                      td #{result.rankId}
+                      td 
+                        a(href='http://localhost:3005/promethee/'+result.resultId+'/results' class="text-primary text-decoration-underline fw-bold") Go to!

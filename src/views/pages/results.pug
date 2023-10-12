@@ -1,0 +1,65 @@
+extends ./../layouts/main.pug
+
+block content
+  div(class="modal modal-dialog-scrollable modal-xl" tabindex="-1" id="promethee-analysis")
+        div(class="modal-dialog rounded-0")
+          div(class="modal-content")
+            div(class="modal-header")
+              h5(class="modal-title") Promethee Analysis 
+              button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
+            div(class="modal-body") 
+              table(class="table table-bordered") 
+                thead 
+                  tr 
+                    th(rowspan="2") Alternatif
+                    th(colspan="7" class="text-center") Kriteria
+                  tr  
+                    th K1  
+                    th K2
+                    th K3 
+                    th K4
+                    th K5
+                    th K6
+                    th K7
+                tbody 
+                  each data, idx in datas
+                    tr
+                      td(class="fw-bold") A#{idx+1}
+                      td #{data.candK1}
+                      td #{data.candK2}
+                      td #{data.candK3}
+                      td #{data.candK4}
+                      td #{data.candK5}
+                      td #{data.candK6}
+                      td #{data.candK7}
+
+            div(class="modal-footer")
+  section 
+    div(class="promethee-results container mt-5 bg-white" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;")
+      header 
+        h5 Hasil Perangkingan Kandidat
+        p Dari total jumlah kandidat, dua nilai kandidat yang teratas akan diambil sebagai kandidat terbaik.
+      table(class="table table-bordered table-striped table-hover") 
+        thead(class="table-primary")
+          tr
+            th(class="text-center") Rank 
+            th Nama Lengkap 
+            th Peran 
+            th Leaving Flow 
+            th Entering Flow 
+            th Net Flow
+        tbody 
+          each data, index in datas
+            tr
+              td(class="text-center")
+                span(class="") Top #{index+1}
+              td
+                span #{data.candName} 
+              td
+                span #{data.candRole}
+              td
+                span #{data.leavingFlow.toFixed(2)}
+              td
+                span #{data.enteringFlow.toFixed(2)}
+              td
+                span #{data.netFlow.toFixed(2)}

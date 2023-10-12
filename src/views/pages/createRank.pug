@@ -1,0 +1,32 @@
+extends ./../layouts/main.pug
+
+block content 
+  section(class="mt-5") 
+    div(class="container w-50 rounded border bg-white" style="box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;") 
+      div(class="row row-cols-3")
+        div(class="col col-5 ps-2 pe-2 pt-3 pb-3")
+          header 
+            h6 Pilih grup rank
+          div 
+            form(action="" method="POST") 
+              select(class="form-select mb-3" name="unfinishedRank")
+                each rank in ranks
+                  option(value=rank.rankId) #{rank.rankName}
+              button(class="btn btn-success container" type="submit") Go!
+
+        div(class="col col-2 text-center d-flex justify-content-center align-items-center")
+          p(style="font-weight: bold;" class="text-black-50") OR
+        div(class="col col-5 ps-2 pe-2 pt-3 pb-3")
+          header(class="d-flex justify-content-between") 
+            h6(class="text-primary") Buat grup rank baru
+            svg(xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="blue" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-plus") 
+                path(d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z")
+                polyline(points="14 2 14 8 20 8")
+                line(x1="12" y1="18" x2="12" y2="12") 
+                line(x1="9" y1="15" x2="15" y2="15")  
+          div 
+            form(action="" method="POST")
+              div(class="mb-3")
+                label(for="rankName" class="form-label" style="font-size: small; font-weight: 500;") Nama Grup Rank  
+                input(type="text" name="rankName" id="rankName" class="form-control" placeholder="max. 100 character" autocomplete="off")
+              button(class="btn btn-primary container" type="submit") Buat

@@ -1,0 +1,125 @@
+extends ./../layouts/main.pug
+
+block content 
+  section(class="container-fluid pt-4 pb-5") 
+    div(class="row row-cols-2")
+      div(class="col")
+        article 
+          header 
+            h5 Kriteria dan Bobot Nilai Kriteria
+            p Berikut merupakan daftar kriteria penilaian beserta ketetapan bobot penilaian dari setiap kriteria yang telah ditentukan.
+          div(class="row row-cols-2") 
+            div(class="col") 
+             table(class="table table-hover table-primary")
+               thead 
+                 tr 
+                   th(colspan="2" class="text-center") Kriteria Penilaian
+               tbody 
+                 tr 
+                   th K1
+                   td Kejujuran
+                 tr 
+                   th K2
+                   td Loyalitas
+                 tr 
+                   th K3
+                   td Kedisiplinan
+                 tr 
+                   th K4
+                   td Tanggung Jawab
+                 tr 
+                   th K5
+                   td Kepribadian
+                 tr 
+                   th K6
+                   td Penampilan
+                 tr 
+                   th K7
+                   td Kehadiran
+            div(class="col") 
+             table(class="table table-striped table-primary")
+               thead 
+                 tr 
+                   th(colspan="2" class="text-center") Bobot Kriteria Penilaian
+                 tr 
+                   th Kriteria 
+                   th Bobot
+               tbody 
+                 tr 
+                   td Sangat Baik
+                   td 5
+                 tr 
+                   td Baik
+                   td 4
+                 tr 
+                   td Cukup
+                   td 3
+                 tr 
+                   td Kurang
+                   td 2
+                 tr 
+                   td Sangat Kurang
+                   td 1
+      div(class="col")
+        div(class="row row-cols-2")
+          div(class="col col-8 form-candidates card")
+            article 
+              header 
+                h5(class="text-primary") Masukkan data kandidat
+                p Mohon berikan data yang sesuai dengan setiap bobot kriteria yang tersedia pada tabel disamping.
+            div(class="mt-3") 
+              form(action="" method="POST")
+                //- Input Hidden
+                input(type="hidden" name="rankId" value=rankId)
+                div(class="mb-3 row")
+                  label(for="fullName" class="col col-form-label") Nama Lengkap
+                  div(class="col") 
+                    input(type="text" class="form-control" name="fullName" id="fullName" autocomplete="off" required)
+                div(class="mb-3 row") 
+                  label(for="role" class="col col-form-label") Peran
+                  div(class="col") 
+                    input(type="text" class="form-control" name="role" id="role" autocomplete="off" required)
+                div(class="mb-3 row") 
+                  label(for="kejujuran" class="col col-form-label") Kejujuran
+                  div(class="col") 
+                    input(type="number" max=5 min=1 class="form-control" name="kejujuran" id="kejujuran" autocomplete="off" required)
+                div(class="mb-3 row") 
+                  label(for="loyalitas" class="col col-form-label") Loyalitas
+                  div(class="col") 
+                    input(type="number" max=5 min=1 class="form-control" name="loyalitas" id="loyalitas" autocomplete="off" required)
+                div(class="mb-3 row") 
+                  label(for="kedisiplinan" class="col col-form-label") Kedisiplinan
+                  div(class="col") 
+                    input(type="number" max=5 min=1 class="form-control" name="kedisiplinan" id="kedisiplinan" autocomplete="off" required)
+                div(class="mb-3 row") 
+                  label(for="tanggungJawab" class="col col-form-label") Tanggung Jawab
+                  div(class="col") 
+                    input(type="number" max=5 min=1 class="form-control" name="tanggungJawab" id="tanggungJawab" autocomplete="off" required)
+                div(class="mb-3 row") 
+                  label(for="kepribadian" class="col col-form-label") Kepribadian
+                  div(class="col") 
+                    input(type="number" max=5 min=1 class="form-control" name="kepribadian" id="kepribadian" autocomplete="off" required)
+                div(class="mb-3 row") 
+                  label(for="penampilan" class="col col-form-label") Penampilan
+                  div(class="col") 
+                    input(type="number" max=5 min=1 class="form-control" name="penampilan" id="penampilan" autocomplete="off" required)
+                div(class="mb-3 row") 
+                  label(for="kehadiran" class="col col-form-label") Kehadiran
+                  div(class="col") 
+                    input(type="number" max=5 min=1 class="form-control" name="kehadiran" id="kehadiran" autocomplete="off" required)
+                div(style="height: 1px;" class="bg-dark mb-2")
+                button(type="submit" class="btn btn-primary container") Submit
+          div(class="col col-4")
+            div(class="candidates-count") 
+              header(class="p-2 rounded") 
+                div(class="row row-cols-2")
+                  div(class="col col-4") 
+                    span ID
+                  div(class="col col-8")
+                    span : #{rankId}  
+              div(class="count-info d-flex justify-content-evenly rounded border bg-white")
+                 div(class="text-center") 
+                  p(style="font-weight: bolder; border-bottom: 1px solid black;") Jumlah
+                  p(class="cand-count rounded-circle") #{countOfCandidates}
+                 div(class="align-self-center border") 
+                  a(href='http://localhost:3005/promethee/candidates/'+rankId+'/calculation' class="btn btn-primary btn-sm ps-3 pe-3") See
