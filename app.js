@@ -4,7 +4,14 @@ const router = require('./src/routes/home');
 const candidatesRoute = require('./src/routes/candidate');
 
 const app = express();
-const _PORT = 3005;
+/* local run */
+/* const _PORT = 3005; */
+
+/* production run */
+const _PORT = process.env.PORT || 3005;
+
+/* forwarding proxy */
+app.set('trust proxy', true);
 
 /* pug-templates-engines */
 app.set('views', './src/views')

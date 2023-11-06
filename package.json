@@ -4,7 +4,7 @@
   "description": "Sistem Pendukung Keputusan - Mata Kuliah Sistem Informasi Enterprise",
   "main": "app.js",
   "scripts": {
-    "start": "node ./server.js",
+    "start": "node ./app.js",
     "start:ojakgtg": "nodemon ./app.js",
     "connect:mysql": "node ./src/mysqlDB.js"
   },

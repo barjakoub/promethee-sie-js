@@ -8,30 +8,188 @@ block content
               h5(class="modal-title") Promethee Analysis 
               button(type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close")
             div(class="modal-body") 
-              table(class="table table-bordered") 
+              // [kriteria-table]
+              h5 Sample Data
+              p. 
+                Berikut merupakan nilai dari masing-masing alternatif berdasarkan kriteria, pada table ini juga ditetapkan bagian kriteria yang bernilai MIN atau MAX serta tipe preferensi yang digunakan.
+              table(class="table table-bordered table-warning table-striped") 
                 thead 
                   tr 
-                    th(rowspan="2") Alternatif
-                    th(colspan="7" class="text-center") Kriteria
-                  tr  
-                    th K1  
-                    th K2
-                    th K3 
-                    th K4
-                    th K5
-                    th K6
-                    th K7
+                    th(rowspan="2" style={'vertical-align': 'middle'}) Kriteria 
+                    th(rowspan="2" style={'vertical-align': 'middle'}) Min/Max
+                    th(colspan="5") Alternatif 
+                    th(rowspan="2" style={'vertical-align': 'middle'}) Tipe
+                    
+                  tr 
+                    each name in datas
+                      th #{name.candName}
                 tbody 
-                  each data, idx in datas
-                    tr
-                      td(class="fw-bold") A#{idx+1}
-                      td #{data.candK1}
-                      td #{data.candK2}
-                      td #{data.candK3}
-                      td #{data.candK4}
-                      td #{data.candK5}
-                      td #{data.candK6}
-                      td #{data.candK7}
+                  tr 
+                    td Kejujuran 
+                    td Max
+                    each kejujuran in datas 
+                      td= kejujuran.candK1
+                    td Usual
+                  tr
+                    td Loyalitas 
+                    td Max
+                    each loyalitas in datas 
+                      td= loyalitas.candK2
+                    td Usual
+                  tr
+                    td Kedisiplinan 
+                    td Max
+                    each kedisiplinan in datas 
+                      td= kedisiplinan.candK3
+                    td Usual
+                  tr
+                    td Tanggung Jawab 
+                    td Max
+                    each tanggungjawab in datas 
+                      td= tanggungjawab.candK4
+                    td Usual
+                  tr
+                    td Kepribadian 
+                    td Max
+                    each kepribadian in datas 
+                      td= kepribadian.candK3
+                    td Usual
+                  tr
+                    td Penampilan 
+                    td Max
+                    each penampilan in datas 
+                      td= penampilan.candK3
+                    td Usual
+                  tr
+                    td Kehadiran
+                    td Max
+                    each kehadiran in datas 
+                      td= kehadiran.candK3
+                    td Usual
+              // [dominasi-kriteria]
+              h5 Dominasi Kriteria
+              p. 
+                P(a,b) = 0, berarti tidak terdapat perbedaan antara a dan b atau tidak ada preferensi dari a lebih baik dari b.
+              p.
+                P(a,b) ~ 0, berarti preferensi dari a lebih baik dari b bernilai lemah.
+              p.
+                P(a,b) ~ 1, berarti preferensi dari a lebih baik dari b bernilai kuat.
+              p.
+                P(a,b) = 1, berarti preferensi dari a lebih baik dari b bernilai mutlak.
+              h5 Tipe Preferensi 
+              p. 
+                Kriteria Biasa (Usual Criterion)
+              img(src="/public/images/assets/usual-rule.png", alt="Usual Rules", srcset="")
+              p Keterangan:
+              span d : Selisih nilai kriteria { d = a - b }
+              br
+              img(src="/public/images/assets/usual-graphic.png", alt="Usual Graphic", srcset="")
+              br
+              br
+              // [nilai-preferensi]
+              h5 Nilai Preferensi 
+              p. 
+                Nilai berikut merupakan hasil penentuan selisih nilai dari alternatif a dan b berdasarkan tipe preferensi yang dipilih.
+              table(class="table table-bordered table-info table-striped") 
+                thead 
+                  tr 
+                    th(rowspan="2") Kriteria 
+                    th(colspan="5") Nilai Preferensi
+                  tr 
+                    each nama in _CANDIDATES_NAME
+                      th #{nama}
+                tbody 
+                  tr 
+                    td Kejujuran 
+                    each pk1 in preferensiK1
+                      td [ #{pk1} ]
+                  tr 
+                    td Loyalitas 
+                    each pk2 in preferensiK2
+                      td [ #{pk2} ]
+                  tr 
+                    td Kedisiplinan 
+                    each pk3 in preferensiK3
+                      td [ #{pk3} ]
+                  tr 
+                    td Tanggung Jawab 
+                    each pk4 in preferensiK4
+                      td [ #{pk4} ]
+                  tr 
+                    td Kepribadian 
+                    each pk5 in preferensiK5
+                      td [ #{pk5} ]
+                  tr 
+                    td Penampilan 
+                    each pk6 in preferensiK6
+                      td [ #{pk6} ]
+                  tr 
+                    td Kehadiran 
+                    each pk7 in preferensiK7
+                      td [ #{pk7} ]
+              // [nilai-index-multikriteria]
+              h5 Index Preferensi Multikriteria 
+              p. 
+                Nilai Index Preferensi Multikriteria diperoleh dari penjumlahan total nilai perbandingan selisih alternatif dibagi dengan total kriteria.
+              table(class="table table-bordered table-primary table-striped") 
+                thead 
+                  tr 
+                    th(colspan="5") Preferensi Multikriteria
+                  tr 
+                    each nama in _CANDIDATES_NAME
+                      th= nama
+                tbody 
+                  tr 
+                    each fpreferencis in _FINAL_PREFERENSIS
+                      td 
+                        each preference in fpreferencis
+                          ul 
+                            li= preference.toFixed(2)
+              // [leaving-flow]
+              h5 Leaving Flow 
+              p. 
+                Nilai Leaving Flow membantu dalam proses pemeringkatan dan pengambilan keputusan dengan mengidentifikasi alternatif yang mungkin kurang kompetitif atau memiliki risiko lebih besar untuk mendapatkan peringkat rendah dalam analisis multi-kriteria.
+              table(class="table table-bordered table-success table-striped")
+                thead 
+                  tr 
+                    th(colspan="5") Leaving Flow
+                  tr 
+                    each nama in _CANDIDATES_NAME
+                      th= nama 
+                tbody 
+                  tr 
+                    each lf in _LEAVING_FLOWS
+                      td= lf.toFixed(2)
+              // [entering-flow] 
+              h5 Entering Flow 
+              p. 
+                Nilai Entering Flow digunakan untuk menentukan alternatif mana yang akan menjadi bagian dari solusi optimal atau yang akan diberi peringkat lebih tinggi dalam konteks analisis multi-kriteria.
+              table(class="table table-bordered table-success table-striped") 
+                thead 
+                  tr 
+                    th(colspan="5") Entering Flow
+                  tr 
+                    each nama in _CANDIDATES_NAME
+                      th= nama
+                tbody 
+                  tr 
+                    each ef in _ENTERING_FLOWS
+                      td= ef.toFixed(2) 
+              // [net-flow]
+              h5 Net Flow 
+              p. 
+                Nilai Net Flow digunakan untuk menggabungkan preferensi dan evaluasi dalam satu metrik yang memungkinkan pengambil keputusan untuk merangkingkan dan memilih alternatif berdasarkan preferensi mereka terhadap kriteria yang relevan.
+              table(class="table table-bordered table-success table-striped")
+                thead 
+                  tr 
+                    th(colspan="5") Net Flow
+                  tr 
+                    each nama in _CANDIDATES_NAME
+                      th= nama
+                tbody 
+                  tr 
+                    each nf in _NET_FLOWS
+                      td= nf.toFixed(2)
 
             div(class="modal-footer")
   section 
